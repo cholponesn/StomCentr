@@ -20,7 +20,27 @@ urlpatterns = [
         'put':'update',
         'get':'retrieve'
 
+    })),
+    path('order/', OrderViewSet.as_view({
+        'get': 'list',
+        'post': 'create'
+    }
+
+    ), name='order'),
+    path('order/<int:order_id>/', OrderViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'delete': 'destroy'
+    }), name='order_detail'),
+    path('doctors/<str:d_username/',DoctorViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'delete': 'destroy',
+    })),
+    path('doctors/',DoctorViewSet.as_view({
+        'get':'list',
     }))
 
-
 ]
+
+
